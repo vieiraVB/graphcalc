@@ -1,15 +1,15 @@
 function calcularFuncaoPrimeiroGrau(a, b) {
 
-    let tipo;
+    let comportamento;
     if(a>0){
-        tipo = "crescente";
+        comportamento = "crescente";
     } else if(a<0){
-        tipo ="decrescente";
+        comportamento ="decrescente";
     } else {
-        tipo = "constante";
+        comportamento = "constante";
     }
 
-    return {a, b, tipo};
+    return {Coeficientes:{a, b}, comportamento};
 }
 
 
