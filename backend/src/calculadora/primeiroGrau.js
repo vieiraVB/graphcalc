@@ -38,9 +38,22 @@ function gerarPontos(a, b, inicio, fim){
     return pontos;
 }
 
+function analisarFuncaoPrimeiroGrau(a, b, inicio = -10, fim = 10){
+    let funcao = calcularFuncaoPrimeiroGrau(a, b);
+    let raiz = calcularRaiz(a, b);
+    let pontos = gerarPontos (a, b, inicio, fim);
+
+    return{
+        ...funcao, 
+        raiz, 
+        pontos
+    }
+}
+
 module.exports = {
     calcularFuncaoPrimeiroGrau,
     calcularPonto,
     calcularRaiz,
-    gerarPontos
+    gerarPontos,
+    analisarFuncaoPrimeiroGrau
 };
