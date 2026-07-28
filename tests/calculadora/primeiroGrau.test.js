@@ -1,4 +1,4 @@
-const primeiroGrau = require("../backend/src/calculadora/primeiroGrau");
+const primeiroGrau = require("../../backend/src/calculadora/primeiroGrau");
 
 console.log(primeiroGrau.calcularFuncaoPrimeiroGrau(2,5));
 console.log(primeiroGrau.calcularPonto(2,5,10));

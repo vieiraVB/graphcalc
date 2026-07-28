@@ -1,4 +1,4 @@
-const { interpretarFuncao } = require("../backend/src/interpretador/interpretarFuncao");
+const { interpretarFuncao } = require("../../backend/src/interpretador/interpretarFuncao");
 
 console.log(interpretarFuncao("x"));
 
