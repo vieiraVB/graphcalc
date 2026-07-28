@@ -52,22 +52,10 @@ funcao
 
 ---
 
-## Padronizar funções
-
-Todos os módulos deverão possuir:
-
-- calcular...
-- gerar...
-- analisar...
-
----
-
 # Interpretador
 
 ## Melhorias
 
-- aceitar X maiúsculo
-- aceitar espaços
 - aceitar multiplicação explícita
 
 Exemplo:
@@ -90,31 +78,6 @@ abc
 
 x++
 
----
-
-# Segundo Grau
-
-## Melhorias
-
-Separar responsabilidades.
-
-Hoje:
-
-tipoIntersecao()
-
-No futuro:
-
-calcularDelta()
-
-calcularRaizes()
-
-calcularVertice()
-
-calcularEixoSimetria()
-
-calcularIntersecao()
-
-analisarFuncaoSegundoGrau()
 
 ---
 

@@ -11,7 +11,7 @@ function calcularFuncaoSegundoGrau(a, b, c){
         concavidade = "Concavidade para baixo"
     }
 
-    return{Coeficientes: {a, b, c}, concavidade};
+    return{coeficientes: {a, b, c}, concavidade};
 }
 
 function calcularDelta(a, b, c){
@@ -43,7 +43,7 @@ function calcularRaizes(a, b, delta){
 function tipoIntersecao(a, b, c){
     let concavidade = calcularFuncaoSegundoGrau(a, b, c);
     let delta = calcularDelta(a,b,c);
-    let raiz = calcularRaizes(a,b, delta);
+    let raizes = calcularRaizes(a,b, delta);
     let intersecao;
 
     if(delta > 0){
@@ -58,18 +58,61 @@ function tipoIntersecao(a, b, c){
         }
     }
 
-        return{
-            ...concavidade,
-            delta,
-            raiz,
-            intersecao
-        }
+        return intersecao;
     
+}
+
+function calcularVertice(a,b,c){
+    let xv = (b * (-1)) / (2*a);
+    let delta = calcularDelta(a,b,c);
+    let yv = (delta * (-1)) / (4*a);
+
+    return {xv, yv};
+}
+
+function calcularEixoSimetria(a,b){
+    let x = (b / (2*a)) * (-1);
+
+    return {x};
+}
+
+function gerarPontos(a,b,c, inicio = -5, fim = 5){
+    let pontos = [];
+    for (let i = inicio;i <= fim; i++){
+        let y = a * (i ** 2) + b*i + c;
+        pontos.push({x: i, y});
+    }
+
+    return pontos;
+}
+
+function analisarFuncaoSegundoGrau(a,b,c, inicio = -5, fim = 5){
+    let funcao = calcularFuncaoSegundoGrau(a,b,c);
+    let delta = calcularDelta(a,b,c);
+    let raizes = calcularRaizes(a,b, delta);
+    let intersecao =  tipoIntersecao(a,b,c);
+    let vertice = calcularVertice(a,b,c);
+    let eixoSimetria = calcularEixoSimetria(a,b);
+    let pontos = gerarPontos(a,b,c,inicio,fim);
+
+    return {
+        ...funcao,
+        delta,
+        raizes,
+        intersecao,
+        vertice,
+        eixoSimetria,
+        pontos
+    };
 }
 
 module.exports = {
     calcularFuncaoSegundoGrau,
     calcularDelta,
     calcularRaizes,
-    tipoIntersecao
+    tipoIntersecao,
+    calcularVertice,
+    calcularEixoSimetria,
+    gerarPontos,
+    analisarFuncaoSegundoGrau
 };
