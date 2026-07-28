@@ -11,7 +11,7 @@ function calcularFuncaoSegundoGrau(a, b, c){
         concavidade = "Concavidade para baixo"
     }
 
-    return{Coeficientes: {a, b, c}, comportamento};
+    return{Coeficientes: {a, b, c}, concavidade};
 }
 
 function calcularDelta(a, b, c){
@@ -20,12 +20,12 @@ function calcularDelta(a, b, c){
 
 function calcularRaizes(a, b, delta){
     let raizDelta = Math.sqrt(delta);
-    let erro = "delta menor que 0 logo nao possui raiz";
+    let erro;
 
     if(raizDelta * raizDelta === delta){
         if(delta > 0){
-            let raizUm = ((b*(-1))+raizDeltaX) / (2*a);
-            let raizDois = ((b*(-1))-raizDeltaX) / (2*a);
+            let raizUm = ((b*(-1))+raizDelta) / (2*a);
+            let raizDois = ((b*(-1))-raizDelta) / (2*a);
 
             return {x1: raizUm, x2: raizDois};
 
@@ -34,15 +34,16 @@ function calcularRaizes(a, b, delta){
 
             return {"raizes reais e iguais a": raiz};
 
-        } else {
-            return erro;
         }
+    } else{
+        return erro = "delta menor que 0, logo nao toca o eixo x";
     }
 }
 
 function tipoIntersecao(a, b, c){
     let concavidade = calcularFuncaoSegundoGrau(a, b, c);
     let delta = calcularDelta(a,b,c);
+    let raiz = calcularRaizes(a,b, delta);
     let intersecao;
 
     if(delta > 0){
@@ -57,13 +58,13 @@ function tipoIntersecao(a, b, c){
         }
     }
 
-    if(delta > 0){
         return{
             ...concavidade,
             delta,
+            raiz,
             intersecao
         }
-    }
+    
 }
 
 module.exports = {
