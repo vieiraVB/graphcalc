@@ -1,9 +1,8 @@
 function calcularFuncaoSegundoGrau(a, b, c) {
     let concavidade;
-    let erro = "nao eh uma funcao de segundo grau";
 
     if (a === 0) {
-        return erro;
+        return "nao eh uma funcao de segundo grau";
     }
     if (a > 0) {
         concavidade = "Concavidade para cima";
@@ -20,7 +19,6 @@ function calcularDelta(a, b, c) {
 
 function calcularRaizes(a, b, delta) {
     let raizDelta = Math.sqrt(delta);
-    let erro;
 
     if (raizDelta * raizDelta === delta) {
         if (delta > 0) {
@@ -34,14 +32,12 @@ function calcularRaizes(a, b, delta) {
             return { "raizes reais e iguais a": raiz };
         }
     } else {
-        return (erro = "delta menor que 0, logo nao toca o eixo x");
+        return "delta menor que 0, logo nao toca o eixo x";
     }
 }
 
 function tipoIntersecao(a, b, c) {
-    let concavidade = calcularFuncaoSegundoGrau(a, b, c);
     let delta = calcularDelta(a, b, c);
-    let raizes = calcularRaizes(a, b, delta);
     let intersecao;
 
     if (delta > 0) {

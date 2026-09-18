@@ -4,8 +4,9 @@ const {
 const {
     interpretarFuncaoSegundoGrau,
 } = require("../../backend/src/interpretador/segundoGrau");
-/*
+
 console.log(interpretarFuncao("x"));
+/*
 console.log(interpretarFuncao("2x+5"));
 console.log(interpretarFuncao("2x - 5"));
 console.log(interpretarFuncao("-x+8"));
@@ -17,8 +18,8 @@ console.log(interpretarFuncao("2x+abc"));
 
 //funcao segundo grau
 
-/*
 console.log(interpretarFuncaoSegundoGrau("12x²"));
+/*
 console.log(interpretarFuncaoSegundoGrau("-12x² + 3x + 4"));
 console.log(interpretarFuncaoSegundoGrau("abcx² + 3x + 4"));
 console.log(interpretarFuncaoSegundoGrau("abc + 3x + 4"));

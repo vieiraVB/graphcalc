@@ -11,9 +11,7 @@ function interpretarFuncao(expressao) {
     }
 
     let a = expressao.substring(0, posicaoX);
-    let b = expressao.substring(posicaoX + 1);
     let textoB = expressao.substring(posicaoX + 1);
-    b = Number(b);
     a = Number(a);
 
     if (expressao[0] === "x") {
@@ -27,6 +25,8 @@ function interpretarFuncao(expressao) {
             return erro;
         }
     }
+
+    let b;
 
     if (textoB === "") {
         b = 0;
