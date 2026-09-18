@@ -7,18 +7,20 @@ function analisar(expressao) {
     let erro = "funcao invalida";
     let resultado;
 
-    if(interpretacao.grau === 1){
-        resultado = analisarFuncaoPrimeiroGrau(interpretacao.resultado.a,
+    if (interpretacao.grau === 1) {
+        resultado = analisarFuncaoPrimeiroGrau(
+            interpretacao.resultado.a,
             interpretacao.resultado.b,
             -10,
-            10
+            10,
         );
-    } else if(interpretacao.grau === 2){
-        resultado = analisarFuncaoSegundoGrau(interpretacao.resultado.a,
+    } else if (interpretacao.grau === 2) {
+        resultado = analisarFuncaoSegundoGrau(
+            interpretacao.resultado.a,
             interpretacao.resultado.b,
             interpretacao.resultado.c,
             -5,
-            5
+            5,
         );
     } else {
         return erro;
@@ -28,5 +30,5 @@ function analisar(expressao) {
 }
 
 module.exports = {
-    analisar
+    analisar,
 };

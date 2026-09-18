@@ -1,5 +1,9 @@
-const { interpretarFuncao } = require("../../backend/src/interpretador/primeiroGrau");
-const { interpretarFuncaoSegundoGrau } = require("../../backend/src/interpretador/segundoGrau");
+const {
+    interpretarFuncao,
+} = require("../../backend/src/interpretador/primeiroGrau");
+const {
+    interpretarFuncaoSegundoGrau,
+} = require("../../backend/src/interpretador/segundoGrau");
 /*
 console.log(interpretarFuncao("x"));
 console.log(interpretarFuncao("2x+5"));

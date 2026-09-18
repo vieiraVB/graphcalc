@@ -104,7 +104,6 @@ graphcalc/
 ├── assets/
 └── tests/
 
-
 Cada módulo possui uma responsabilidade específica, facilitando a manutenção e evolução do sistema.
 
 ---

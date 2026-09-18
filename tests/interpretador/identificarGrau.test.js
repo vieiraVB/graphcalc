@@ -1,4 +1,6 @@
-const { identificarGrau } = require("../../backend/src/interpretador/identificarGrau");
+const {
+    identificarGrau,
+} = require("../../backend/src/interpretador/identificarGrau");
 
 console.log(identificarGrau("x + 5"));
 console.log(identificarGrau("2x - 10"));

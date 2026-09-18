@@ -12,11 +12,7 @@ Primeiro grau:
 
 ```js
 {
-    a,
-    b,
-    tipo,
-    raiz,
-    pontos
+    (a, b, tipo, raiz, pontos);
 }
 ```
 
@@ -77,7 +73,6 @@ abc
 ++2x
 
 x++
-
 
 ---
 
@@ -141,13 +136,14 @@ Melhorar documentação usando JSDoc.
 Exemplo:
 
 /**
- * Calcula o delta da função do segundo grau.
- *
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @returns {number}
- */
+
+- Calcula o delta da função do segundo grau.
+-
+- @param {number} a
+- @param {number} b
+- @param {number} c
+- @returns {number}
+  */
 
 ---
 

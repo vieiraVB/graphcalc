@@ -18,7 +18,6 @@ function interpretarFuncaoSegundoGrau(expressao) {
     a = Number(a);
 
     if (expoente === "²") {
-
         if (expressao[0] === "x") {
             a = 1;
         } else if (Number.isNaN(a)) {
@@ -44,7 +43,7 @@ function interpretarFuncaoSegundoGrau(expressao) {
         }
 
         if (segundoX > 0) {
-            textoC = expressao.substring(segundoX + 1)
+            textoC = expressao.substring(segundoX + 1);
 
             if (textoC === "") {
                 c = 0;
@@ -56,7 +55,7 @@ function interpretarFuncaoSegundoGrau(expressao) {
                 }
             }
         } else {
-            textoC = expressao.substring(posicaoX + 2)
+            textoC = expressao.substring(posicaoX + 2);
             if (textoC === "") {
                 c = 0;
             } else {
@@ -85,5 +84,5 @@ function interpretarFuncaoSegundoGrau(expressao) {
 }
 
 module.exports = {
-    interpretarFuncaoSegundoGrau
-}
+    interpretarFuncaoSegundoGrau,
+};
