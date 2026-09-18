@@ -21,6 +21,8 @@ function interpretarFuncao(expressao) {
     } else if (Number.isNaN(a)) {
         if (expressao[0] === "-") {
             a = -1;
+        }else if(expressao[0] === "+"){
+            a = 1;
         } else {
             return erro;
         }
@@ -40,5 +42,5 @@ function interpretarFuncao(expressao) {
 }
 
 module.exports = {
-    interpretarFuncao
+    interpretarFuncao,
 };

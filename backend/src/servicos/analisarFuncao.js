@@ -1,4 +1,4 @@
-const { interpretarFuncao } = require("../interpretador/interpretarFuncao");
+const { interpretarFuncao } = require("../interpretador/primeiroGrau");
 const primeiroGrau = require("../calculadora/primeiroGrau");
 
 
