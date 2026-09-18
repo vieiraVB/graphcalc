@@ -30,7 +30,7 @@ function interpretarFuncaoSegundoGrau(expressao) {
             }
         }
 
-        if (b === "") {
+        if ((b === "+" || b === "-") && expressao[segundoX] === "x") {
             if (expressao[segundoX - 1] === "-") {
                 b = -1;
             } else if (expressao[segundoX - 1] === "+") {

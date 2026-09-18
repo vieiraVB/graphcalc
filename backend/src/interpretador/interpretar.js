@@ -4,7 +4,6 @@ const { interpretarFuncaoSegundoGrau } = require("./segundoGrau");
 
 function interpretar(expressao) {
     let grau = identificarGrau(expressao);
-    let erro = "funcao invalida";
     let resultado;
 
     if (grau === 1) {
@@ -12,7 +11,11 @@ function interpretar(expressao) {
     } else if (grau === 2) {
         resultado = interpretarFuncaoSegundoGrau(expressao);
     } else {
-        return erro;
+        return { erro: true };
+    }
+
+    if (typeof resultado === "string") {
+        return { erro: true };
     }
 
     return { grau, resultado };
