@@ -1,7 +1,7 @@
-const primeiroGrau = require("./calculadora/primeiroGrau");
-const interpretador = require("./interpretador/interpretarFuncao");
+const { interpretar } = require("./interpretador/interpretar");
+const { analisar } = require("./calculadora/analisar");
 
 module.exports = {
-    primeiroGrau,
-    interpretador,
+    interpretar,
+    analisar,
 };
