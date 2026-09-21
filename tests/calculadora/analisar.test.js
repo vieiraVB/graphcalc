@@ -4,7 +4,7 @@ test("Teste de analise", () => {
     expect(analisar("2x + 5")).toEqual({
         grau: 1,
         resultado: {
-            Coeficientes: {
+            coeficientes: {
                 a: 2,
                 b: 5,
             },
@@ -83,7 +83,7 @@ test("Teste de analise de expressoes invalidas", () => {
         expect(analisar("5 + 2x")).toMatchObject({
             grau: 1,
             resultado: {
-                Coeficientes: {
+                coeficientes: {
                     a: 2,
                     b: 5,
                 },

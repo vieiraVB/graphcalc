@@ -11,7 +11,7 @@ test("Teste de entrega de funções", () => {
     expect(analisar("2x + 5")).toMatchObject({
         grau: 1,
         resultado: {
-            Coeficientes: {
+            coeficientes: {
                 a: 2,
                 b: 5,
             },

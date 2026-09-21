@@ -143,3 +143,46 @@ test("Teste de analise da funcao", () => {
         ],
     });
 });
+
+test("Teste de delta positivo", () => {
+    expect(segundoGrau.calcularDelta(1, 5, 4)).toBe(9);
+});
+
+test("Teste de delta zero", () => {
+    expect(segundoGrau.calcularDelta(1, 2, 1)).toBe(0);
+});
+
+test("Teste de delta negativo", () => {
+    expect(segundoGrau.calcularDelta(2, 2, 5)).toBe(-36);
+});
+
+test("Teste de vertice", () => {
+    expect(segundoGrau.calcularVertice(2, -6, 8)).toEqual({
+        xv: 1.5,
+        yv: 3.5,
+    });
+});
+
+test("Teste de eixo de simetria", () => {
+    expect(segundoGrau.calcularEixoSimetria(2, -6)).toEqual({
+        x: 1.5,
+    });
+});
+
+test("Teste de duas intersecoes", () => {
+    expect(segundoGrau.tipoIntersecao(1, 0, -4)).toBe(
+        "A parábola corta o eixo X em dois pontos reais e distintos"
+    );
+});
+
+test("Teste de uma intersecao", () => {
+    expect(segundoGrau.tipoIntersecao(1, -2, 1)).toBe(
+        "A parábola toca o eixo X em um único ponto real"
+    );
+});
+
+test("Teste sem intersecao", () => {
+    expect(segundoGrau.tipoIntersecao(1, 0, 4)).toBe(
+        "A parábola não intercepta o eixo X, ficando totalmente acima"
+    );
+});

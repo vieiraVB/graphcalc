@@ -8,7 +8,7 @@ function calcularFuncaoPrimeiroGrau(a, b) {
         comportamento = "constante";
     }
 
-    return { Coeficientes: { a, b }, comportamento };
+    return { coeficientes: { a, b }, comportamento };
 }
 
 function calcularPonto(a, b, x) {
