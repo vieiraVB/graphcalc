@@ -2,82 +2,62 @@ function interpretarFuncaoSegundoGrau(expressao) {
     expressao = expressao.replaceAll(" ", "");
     expressao = expressao.toLowerCase();
 
-    let posicaoX = expressao.indexOf("x");
-    let segundoX = expressao.indexOf("x", posicaoX + 1);
-    let erro = "nao eh uma expressao valida";
+    let termos = expressao.split(/(?=[+-])/);
 
-    if (posicaoX === -1) {
-        return erro;
-    }
+    let a = 0;
+    let b = 0;
+    let c = 0;
 
-    let a = expressao.substring(0, posicaoX);
-    let b = expressao.substring(posicaoX + 2, segundoX);
-    let c;
-    let textoC;
-    let expoente = expressao.substring(posicaoX + 1, posicaoX + 2);
-    a = Number(a);
-
-    if (expoente === "²") {
-        if (expressao[0] === "x") {
-            a = 1;
-        } else if (Number.isNaN(a)) {
-            if (expressao[0] === "-") {
-                a = -1;
-            } else if (expressao[0] === "+") {
-                a = 1;
-            } else {
-                return erro;
-            }
+    for (let termo of termos) {
+        if (termo === "+" || termo === "-") {
+            return "nao eh uma expressao valida";
         }
 
-        if ((b === "+" || b === "-") && expressao[segundoX] === "x") {
-            if (expressao[segundoX - 1] === "-") {
-                b = -1;
-            } else if (expressao[segundoX - 1] === "+") {
-                b = 1;
-            } else {
-                b = 0;
-            }
+        if (termo.includes("x²")) {
+            a = termo;
+        } else if (termo.includes("x")) {
+            b = termo;
         } else {
-            b = Number(b);
+            c = termo;
         }
-
-        if (segundoX > 0) {
-            textoC = expressao.substring(segundoX + 1);
-
-            if (textoC === "") {
-                c = 0;
-            } else {
-                c = Number(textoC);
-
-                if (Number.isNaN(c)) {
-                    return erro;
-                }
-            }
-        } else {
-            textoC = expressao.substring(posicaoX + 2);
-            if (textoC === "") {
-                c = 0;
-            } else {
-                c = Number(textoC);
-
-                if (Number.isNaN(c)) {
-                    return erro;
-                }
-            }
-
-            b = 0;
-        }
-    } else {
-        return erro;
     }
 
     if (a === 0) {
-        return erro;
+        return "nao eh uma expressao valida";
     }
 
-    if (Number.isNaN(b)) {
-        return erro;
+    if (a === "x²" || a === "+x²" || a === "-x²") {
+        if (a === "-x²") {
+            a = -1;
+        } else {
+            a = 1;
+        }
+    } else {
+        a = a.replace("x²", "");
+        a = Number(a);
+    }
+
+    if (a === 0) {
+        return "nao eh uma expressao valida";
+    }
+
+    if (b !== 0) {
+        if (b === "x" || b === "+x" || b === "-x") {
+            if (b === "-x") {
+                b = -1;
+            } else {
+                b = 1;
+            }
+        } else {
+            b = b.replace("x", "");
+            b = Number(b);
+        }
+    }
+
+    c = Number(c);
+
+    if (Number.isNaN(a) || Number.isNaN(b) || Number.isNaN(c)) {
+        return "nao eh uma expressao valida";
     }
 
     return { a, b, c };

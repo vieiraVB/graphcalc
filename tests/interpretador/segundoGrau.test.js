@@ -30,7 +30,6 @@ test("Teste de coeficientes negativos", () => {
 
 test("teste de coeficientes implícitos", () => {
     expect(interpretarFuncaoSegundoGrau("x² + x + 1")).toEqual({
-        //descobrir o porque desse erro
         a: 1,
         b: 1,
         c: 1,
@@ -87,4 +86,44 @@ test("teste de expressoes invalidas", () => {
     expect(interpretarFuncaoSegundoGrau("2x² + 5x abc")).toBe(
         "nao eh uma expressao valida",
     );
+});
+
+test("teste de termos em outra ordem", () => {
+    expect(interpretarFuncaoSegundoGrau("4 + 10x + 2x²")).toEqual({
+        a: 2,
+        b: 10,
+        c: 4,
+    });
+
+    expect(interpretarFuncaoSegundoGrau("10x + 4 + 2x²")).toEqual({
+        a: 2,
+        b: 10,
+        c: 4,
+    });
+
+    expect(interpretarFuncaoSegundoGrau("4 + 2x² + 10x")).toEqual({
+        a: 2,
+        b: 10,
+        c: 4,
+    });
+});
+
+test("teste de sinais em outra ordem", () => {
+    expect(interpretarFuncaoSegundoGrau("-4 + 10x + 2x²")).toEqual({
+        a: 2,
+        b: 10,
+        c: -4,
+    });
+
+    expect(interpretarFuncaoSegundoGrau("4 - 10x + 2x²")).toEqual({
+        a: 2,
+        b: -10,
+        c: 4,
+    });
+
+    expect(interpretarFuncaoSegundoGrau("-4 - 10x - 2x²")).toEqual({
+        a: -2,
+        b: -10,
+        c: -4,
+    });
 });

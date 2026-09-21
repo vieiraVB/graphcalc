@@ -108,17 +108,11 @@ test("Teste de coeficientes maiores", () => {
 test("Teste de expressoes invalidas", () => {
     expect(interpretarFuncao("abc")).toBe("nao eh uma expressao valida");
 
-    expect(interpretarFuncao("2x + abc")).toBe(
-        "nao eh uma expressao valida",
-    );
+    expect(interpretarFuncao("2x + abc")).toBe("nao eh uma expressao valida");
 
     expect(interpretarFuncao("5")).toBe("nao eh uma expressao valida");
 
-    expect(interpretarFuncao("abc + 2x")).toBe(
-        "nao eh uma expressao valida",
-    );
+    expect(interpretarFuncao("abc + 2x")).toBe("nao eh uma expressao valida");
 
-    expect(interpretarFuncao("2xx + 5")).toBe(
-        "nao eh uma expressao valida",
-    );
+    expect(interpretarFuncao("2xx + 5")).toBe("nao eh uma expressao valida");
 });
