@@ -9,26 +9,26 @@ function analisar(expressao) {
 
     if (interpretacao.erro) {
         return erro;
-    } else {
-        if (interpretacao.grau === 1) {
-            resultado = analisarFuncaoPrimeiroGrau(
-                interpretacao.resultado.a,
-                interpretacao.resultado.b,
-                -10,
-                10,
-            );
-        } else if (interpretacao.grau === 2) {
-            resultado = analisarFuncaoSegundoGrau(
-                interpretacao.resultado.a,
-                interpretacao.resultado.b,
-                interpretacao.resultado.c,
-                -5,
-                5,
-            );
-        }
+    }
+    
+    if (interpretacao.grau === 1) {
+        resultado = analisarFuncaoPrimeiroGrau(
+            interpretacao.resultado.a,
+            interpretacao.resultado.b,
+            -10,
+            10,
+        );
+    } else if (interpretacao.grau === 2) {
+        resultado = analisarFuncaoSegundoGrau(
+            interpretacao.resultado.a,
+            interpretacao.resultado.b,
+            interpretacao.resultado.c,
+            -5,
+            5,
+        );
     }
 
-    return { ...interpretacao, resultado };
+return { ...interpretacao, resultado };
 }
 
 module.exports = {

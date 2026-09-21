@@ -70,5 +70,36 @@ test("Teste de analise", () => {
             ],
         },
     });
-    expect(analisar("abc")).toBe("funcao invalida");
 });
+
+test("Teste de analise de expressoes invalidas", () => {
+        expect(analisar("abc")).toBe("funcao invalida");
+        expect(analisar("2x + abc")).toBe("funcao invalida");
+        expect(analisar("2x² + abc")).toBe("funcao invalida");
+        expect(analisar("0x² + 3x + 4")).toBe("funcao invalida");
+    });
+
+    test("Teste de analise com termos em outra ordem", () => {
+        expect(analisar("5 + 2x")).toMatchObject({
+            grau: 1,
+            resultado: {
+                Coeficientes: {
+                    a: 2,
+                    b: 5,
+                },
+                comportamento: "crescente",
+                raiz: -2.5,
+            },
+        });
+
+        expect(analisar("4 + 10x + 2x²")).toMatchObject({
+            grau: 2,
+            resultado: {
+                coeficientes: {
+                    a: 2,
+                    b: 10,
+                    c: 4,
+                },
+            },
+        });
+    });
