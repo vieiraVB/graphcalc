@@ -73,33 +73,51 @@ test("Teste de analise", () => {
 });
 
 test("Teste de analise de expressoes invalidas", () => {
-        expect(analisar("abc")).toBe("funcao invalida");
-        expect(analisar("2x + abc")).toBe("funcao invalida");
-        expect(analisar("2x² + abc")).toBe("funcao invalida");
-        expect(analisar("0x² + 3x + 4")).toBe("funcao invalida");
+    expect(analisar("abc")).toBe("funcao invalida");
+    expect(analisar("2x + abc")).toBe("funcao invalida");
+    expect(analisar("2x² + abc")).toBe("funcao invalida");
+    expect(analisar("0x² + 3x + 4")).toBe("funcao invalida");
+});
+
+test("Teste de analise com termos em outra ordem", () => {
+    expect(analisar("5 + 2x")).toMatchObject({
+        grau: 1,
+        resultado: {
+            coeficientes: {
+                a: 2,
+                b: 5,
+            },
+            comportamento: "crescente",
+            raiz: -2.5,
+        },
     });
 
-    test("Teste de analise com termos em outra ordem", () => {
-        expect(analisar("5 + 2x")).toMatchObject({
-            grau: 1,
-            resultado: {
-                coeficientes: {
-                    a: 2,
-                    b: 5,
-                },
-                comportamento: "crescente",
-                raiz: -2.5,
+    expect(analisar("4 + 10x + 2x²")).toMatchObject({
+        grau: 2,
+        resultado: {
+            coeficientes: {
+                a: 2,
+                b: 10,
+                c: 4,
             },
-        });
-
-        expect(analisar("4 + 10x + 2x²")).toMatchObject({
-            grau: 2,
-            resultado: {
-                coeficientes: {
-                    a: 2,
-                    b: 10,
-                    c: 4,
-                },
-            },
-        });
+        },
     });
+});
+
+test("Teste de analise de funcao constante", () => {
+    const resultado = analisar("5");
+
+    expect(resultado.grau).toBe(0);
+    expect(resultado.resultado.casoEspecial).toBe(true);
+    expect(resultado.resultado.classificacao).toBe("funcao constante");
+    expect(resultado.resultado.raizes).toBe("nao possui raizes reais");
+});
+
+test("Teste de analise de funcao nula", () => {
+    const resultado = analisar("0");
+
+    expect(resultado.grau).toBe(0);
+    expect(resultado.resultado.casoEspecial).toBe(true);
+    expect(resultado.resultado.classificacao).toBe("funcao nula");
+    expect(resultado.resultado.raizes).toBe("infinitas raizes reais");
+});

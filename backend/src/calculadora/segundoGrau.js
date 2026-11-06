@@ -18,22 +18,22 @@ function calcularDelta(a, b, c) {
 }
 
 function calcularRaizes(a, b, delta) {
-    let raizDelta = Math.sqrt(delta);
+    if (delta > 0) {
+        let raizDelta = Math.sqrt(delta);
 
-    if (raizDelta * raizDelta === delta) {
-        if (delta > 0) {
-            let raizUm = (b * -1 + raizDelta) / (2 * a);
-            let raizDois = (b * -1 - raizDelta) / (2 * a);
+        let raizUm = (-b + raizDelta) / (2 * a);
+        let raizDois = (-b - raizDelta) / (2 * a);
 
-            return { x1: raizUm, x2: raizDois };
-        } else if (delta === 0) {
-            let raiz = (b * -1) / (2 * a);
-
-            return { "raizes reais e iguais a": raiz };
-        }
-    } else {
-        return "delta menor que 0, logo nao toca o eixo x";
+        return { x1: raizUm, x2: raizDois };
     }
+
+    if (delta === 0) {
+        let raiz = -b / (2 * a);
+
+        return { "raizes reais e iguais a": raiz };
+    }
+
+    return "delta menor que 0, logo nao toca o eixo x";
 }
 
 function tipoIntersecao(a, b, c) {
@@ -84,6 +84,11 @@ function gerarPontos(a, b, c, inicio = -5, fim = 5) {
 
 function analisarFuncaoSegundoGrau(a, b, c, inicio = -5, fim = 5) {
     let funcao = calcularFuncaoSegundoGrau(a, b, c);
+
+    if (typeof funcao === "string") {
+        return funcao;
+    }
+
     let delta = calcularDelta(a, b, c);
     let raizes = calcularRaizes(a, b, delta);
     let intersecao = tipoIntersecao(a, b, c);

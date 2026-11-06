@@ -100,3 +100,31 @@ test("Teste de geração de pontos", () => {
         { x: 2, y: 9 },
     ]);
 });
+
+test("Teste de precisao com coeficientes decimais", () => {
+    const raiz = primeiroGrau.calcularRaiz(0.1, -0.3);
+    const pontos = primeiroGrau.gerarPontos(0.1, -0.3, 2, 3);
+
+    expect(Math.abs(raiz - 3)).toBeLessThan(1e-10);
+
+    expect(Math.abs(pontos[0].y + 0.1)).toBeLessThan(1e-10);
+    expect(Math.abs(pontos[1].y)).toBeLessThan(1e-10);
+});
+
+test("Teste de funcao constante como caso especial", () => {
+    const resultado = primeiroGrau.analisarFuncaoPrimeiroGrau(0, 5);
+
+    expect(resultado.casoEspecial).toBe(true);
+    expect(resultado.classificacao).toBe("funcao constante");
+    expect(resultado.raizes).toBe("nao possui raizes reais");
+    expect(resultado.pontos.every((ponto) => ponto.y === 5)).toBe(true);
+});
+
+test("Teste de funcao nula como caso especial", () => {
+    const resultado = primeiroGrau.analisarFuncaoPrimeiroGrau(0, 0);
+
+    expect(resultado.casoEspecial).toBe(true);
+    expect(resultado.classificacao).toBe("funcao nula");
+    expect(resultado.raizes).toBe("infinitas raizes reais");
+    expect(resultado.pontos.every((ponto) => ponto.y === 0)).toBe(true);
+});

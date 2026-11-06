@@ -10,8 +10,8 @@ function analisar(expressao) {
     if (interpretacao.erro) {
         return erro;
     }
-    
-    if (interpretacao.grau === 1) {
+
+    if (interpretacao.grau === 0 || interpretacao.grau === 1) {
         resultado = analisarFuncaoPrimeiroGrau(
             interpretacao.resultado.a,
             interpretacao.resultado.b,
@@ -28,7 +28,7 @@ function analisar(expressao) {
         );
     }
 
-return { ...interpretacao, resultado };
+    return { ...interpretacao, resultado };
 }
 
 module.exports = {

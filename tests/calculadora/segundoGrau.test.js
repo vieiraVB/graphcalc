@@ -44,6 +44,10 @@ test("Teste de calculo de raizes", () => {
         x1: 3,
         x2: 2,
     });
+    expect(segundoGrau.calcularRaizes(1, 0, 5)).toEqual({
+        x1: Math.sqrt(5) / 2,
+        x2: -Math.sqrt(5) / 2,
+    });
 });
 
 test("Teste de tipo de interesecao", () => {
@@ -171,18 +175,33 @@ test("Teste de eixo de simetria", () => {
 
 test("Teste de duas intersecoes", () => {
     expect(segundoGrau.tipoIntersecao(1, 0, -4)).toBe(
-        "A parábola corta o eixo X em dois pontos reais e distintos"
+        "A parábola corta o eixo X em dois pontos reais e distintos",
     );
 });
 
 test("Teste de uma intersecao", () => {
     expect(segundoGrau.tipoIntersecao(1, -2, 1)).toBe(
-        "A parábola toca o eixo X em um único ponto real"
+        "A parábola toca o eixo X em um único ponto real",
     );
 });
 
 test("Teste sem intersecao", () => {
     expect(segundoGrau.tipoIntersecao(1, 0, 4)).toBe(
-        "A parábola não intercepta o eixo X, ficando totalmente acima"
+        "A parábola não intercepta o eixo X, ficando totalmente acima",
     );
+});
+
+test("Teste de analise de funcao invalida", () => {
+    expect(segundoGrau.analisarFuncaoSegundoGrau(0, 2, 3)).toBe(
+        "nao eh uma funcao de segundo grau",
+    );
+});
+
+test("Teste de precisao com coeficientes decimais", () => {
+    const delta = segundoGrau.calcularDelta(0.1, -0.3, 0.2);
+    const raizes = segundoGrau.calcularRaizes(0.1, -0.3, delta);
+
+    expect(Math.abs(delta - 0.01)).toBeLessThan(1e-10);
+    expect(Math.abs(raizes.x1 - 2)).toBeLessThan(1e-10);
+    expect(Math.abs(raizes.x2 - 1)).toBeLessThan(1e-10);
 });
